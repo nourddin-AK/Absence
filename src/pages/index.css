@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply transition-colors duration-300;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+.card {
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.f-Annee{
+  font-weight: 540;
+  
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
+}
+.dd-1eme {
+  background-color: #e8f1fc !important; /* Light blue */
+  color: #333333;
+}
+
+.dd-2eme {
+  background-color: #eae8ff !important; /* Light lavender */
+  color: #000000;
+}
+
+.dd-3eme {
+  background-color: #fdecea !important; /* Light pink */
+  color: #333333;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .dd-1eme, .dd-2eme, .dd-3eme {
+    color: #000000; /* Text color in dark mode */
+  }
+}
+
+/* Optional: If you want the card text color to be readable in dark mode, you can use dark text classes here */
+.card-body {
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.card-body h1, .card-body h5, .card-body h2 {
+  transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+
+/*groups*/
+
+.dis-seance1{
+  background: linear-gradient(66deg,#e9ffe8 15%,#f5e9ff 95%);
+}
+.dis-seance2{
+  background: linear-gradient(66deg,#f5e9ff 15%,#e9ffe8 95%);
+}
+
+
+/*duree*/
+/*radio*/
+/* Style for the radio input when it's not disabled */
+/* Default styles for radio buttons */
+.custom-radio {
+  accent-color: #6c757d; /* Default muted color */
+  width: 18px;
+  height: 18px;
+}
+
+/* Green for Preson */
+.radio-green {
+  accent-color: #28a745; /* Bootstrap success green */
+}
+.label-green {
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Red for Absence */
+.radio-red {
+  accent-color: #dc3545; /* Bootstrap danger red */
+}
+.label-red {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Orange for Retard */
+.radio-orange {
+  accent-color: #fd7e14; /* Bootstrap warning orange */
+}
+.label-orange {
+  color: #fd7e14;
+  font-weight: bold;
+}
+
+/* Disabled styles */
+.custom-radio:disabled {
+  accent-color: #d6d6d6; /* Light gray for disabled state */
+}
+.form-check-label:disabled {
+  color: #6c757d; /* Muted color for disabled labels */
+  cursor: not-allowed;
+}
+/* Form Styling */
+
+
+/* Table Row Spacing */
+.table tbody tr {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* Column Borders */
+.table th,
+.table td {
+  padding: 10px !important;
+}
+
+/* Hover Highlight */
+.table-hover tbody tr:hover {
+  background-color: #afafaf;
+}
+/* Dark Mode Table Row Hover */
+.table-hover tbody tr:hover {
+  background-color: #c1dfda; /* Dark background for hover */
+  color: #000000; /* White text when hovered */
+  border-radius: 25px;
+}
+
+.table-hover tbody tr {
+  transition: background-color 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  form {
+    width: 90%;
+  }
+}
+
+
+/* Custom CSS to disable focus styles */
+.no-focus .p-autocomplete-input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+/* Global CSS to disable focus on the autocomplete input */
+.p-autocomplete-input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* width */
+::-webkit-scrollbar {
+  width: 5px;
+  max-width: 8px;
+  border-radius: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d8b4fe;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b779f9;
+}
+
+  }
+
+
+
+  .Apflex{
+    height: 100% !important;
+  }
+
+.p-paginator-bottom {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+  
