@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import SideBar from './pages/Menu';
 import Nav from './pages/nav';
 import Dashboard from "./pages/Dashboard";
-import Groups from "./pages/Groups";
+import Group from "./pages/Groups";
 import Duree from "./pages/duree";
 import Listabsence from "./pages/listabsence";
 import AdminProfile from "./Admin/AdminProfile"
@@ -30,7 +30,7 @@ function App() {
           <Nav  theme={theme} setTheme={setTheme}/>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/groups" element={<Groups />} />
+            <Route path="/groups" element={<Group />} />
             <Route path="/duree" element={<Duree />} />
             <Route path="/listabsence" element={<Listabsence />} />
             <Route path="/AdminProfile" element={<AdminProfile />} />

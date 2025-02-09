@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AutoComplete } from 'primereact/autocomplete';
 import { Search } from 'lucide-react';
+import { Groups } from '../Users'; // Import Groups from Users
 import './index.css';
 
 const Dashboard = () => {
-  const Groups = useSelector((state) => state.Groups);
   const navigate = useNavigate();
 
   const [value, setValue] = useState('');
@@ -110,51 +109,50 @@ const Dashboard = () => {
       </div>
 
       {value.trim() !== '' && filteredGroups.length > 0 && (
-  <div className="mt-12">
-    <h2 className="text-center text-3xl font-bold mb-8">Search Results</h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filteredGroups.map((group) => (
-        <div
-          key={group.idg}
-          className={`card dd-${group.annee} shadow-lg h-full rounded-lg cursor-pointer dark:bg-gray-800`}
-          onClick={() => navigate(`/groups?filier=${group.name}&group=${group.Ng}`)}
-        >
-          <div className="card-body text-center p-4">
-            <h5 className="text-xl font-semibold text-gray-700">{group.N_filier}</h5>
-            <h1 className="text-3xl font-bold">{group.name}</h1>
-            <h2 className="text-2xl font-semibold text-gray-500">G{group.Ng}</h2>
+        <div className="mt-12">
+          <h2 className="text-center text-3xl font-bold mb-8">Search Results</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredGroups.map((group) => (
+              <div
+                key={group.idg}
+                className={`card dd-${group.annee} shadow-lg h-full rounded-lg cursor-pointer dark:bg-gray-800`}
+                onClick={() => navigate(`/groups?filier=${group.name}&group=${group.Ng}`)}
+              >
+                <div className="card-body text-center p-4">
+                  <h5 className="text-xl font-semibold text-gray-700">{group.N_filier}</h5>
+                  <h1 className="text-3xl font-bold">{group.name}</h1>
+                  <h2 className="text-2xl font-semibold text-gray-500">G{group.Ng}</h2>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-)}
+      )}
 
-{value.trim() === '' && !hasSearched && (
-  <div>
-    {uniqueGroups.map((filiere) => (
-      <div id={filiere.annee} key={filiere.annee} className="mt-12 mb-12">
-        <h2 className="text-center text-3xl font-bold mb-8">{filiere.annee} Année Groups</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Groups.filter((group) => group.annee === filiere.annee).map((group) => (
-            <div
-              key={group.idg}
-              className={`card dd-${group.annee} shadow-lg h-full rounded-lg cursor-pointer dark:bg-gray-800`}
-              onClick={() => navigate(`/groups?filier=${group.name}&group=${group.Ng}`)}
-            >
-              <div className="card-body text-center p-4">
-                <h5 className="text-xl font-semibold text-gray-700">{group.N_filier}</h5>
-                <h1 className="text-3xl font-bold">{group.name}</h1>
-                <h2 className="text-2xl font-semibold text-gray-500">G{group.Ng}</h2>
+      {value.trim() === '' && !hasSearched && (
+        <div>
+          {uniqueGroups.map((filiere) => (
+            <div id={filiere.annee} key={filiere.annee} className="mt-12 mb-12">
+              <h2 className="text-center text-3xl font-bold mb-8">{filiere.annee} Année Groups</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {Groups.filter((group) => group.annee === filiere.annee).map((group) => (
+                  <div
+                    key={group.idg}
+                    className={`card dd-${group.annee} shadow-lg h-full rounded-lg cursor-pointer dark:bg-gray-800`}
+                    onClick={() => navigate(`/groups?filier=${group.name}&group=${group.Ng}`)}
+                  >
+                    <div className="card-body text-center p-4">
+                      <h5 className="text-xl font-semibold text-gray-700">{group.N_filier}</h5>
+                      <h1 className="text-3xl font-bold">{group.name}</h1>
+                      <h2 className="text-2xl font-semibold text-gray-500">G{group.Ng}</h2>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
         </div>
-      </div>
-    ))}
-  </div>
-)}
-
+      )}
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { addAbsence } from '../redux/action';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { stageirs } from '../Users';
+import { Groups } from '../Users';
+
 import './index.css';
 
 const Duree = () => {
@@ -11,10 +12,7 @@ const Duree = () => {
   const queryParams = new URLSearchParams(location.search);
   const groupId = queryParams.get('group');
   const duree = queryParams.get('duree'); // Get the duree value
-  const Stageirs = useSelector((state) => state.Stageirs);
-  const Groups = useSelector((state) => state.Groups);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [tynav,settynav]=useState('');
   useEffect(() => {
     if (duree === 'false') {
@@ -24,7 +22,7 @@ const Duree = () => {
     }
   }, [duree]);
   // Filter stagiaires by group
-  const filteredStagiaires = Stageirs.filter(
+  const filteredStagiaires = stageirs.filter(
     (stagiaire) => stagiaire.idg.toString() === groupId
   );
 
@@ -77,7 +75,6 @@ const Duree = () => {
     filteredStagiaires.forEach((stagiaire) => {
       const absence = absenceData[stagiaire.Cef]?.firstSeance;
       if (absence && absence.type) {
-        dispatch(addAbsence(absence));
         
       }
       
@@ -96,7 +93,6 @@ const Duree = () => {
     filteredStagiaires.forEach((stagiaire) => {
       const absence = absenceData[stagiaire.Cef]?.secondSeance;
       if (absence && absence.type) {
-        dispatch(addAbsence(absence));
       }
     });
     setSecondSeanceEnabled(false);

@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Groups } from '../Users'; // Import Groups data directly
 import './index.css';
 
-const Groups = () => {
+const Group = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const filier = queryParams.get('filier');
   const Ngroup = queryParams.get('group');
-  const Groups = useSelector((state) => state.Groups);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!filier) {
-      navigate('/');
+      navigate('/'); // If no filier parameter is passed, redirect to home
     }
   }, [filier, navigate]);
 
-  // Filter to show only the group that matches the parameters
+  // Filter the group based on the query parameters (filier and Ngroup)
   const filteredGroup = Groups.find(
     (group) => group.name === filier && (!Ngroup || group.Ng === parseInt(Ngroup))
   );
@@ -37,7 +36,7 @@ const Groups = () => {
               className="cursor-pointer transform transition duration-300 hover:scale-102"
               onClick={() => navigate(`/duree?group=${filteredGroup.idg}&duree=false`)}
             >
-              <div className="dis-seance1 shadow-lg rounded-lg p-6  dark:text-black text-center">
+              <div className="dis-seance1 shadow-lg rounded-lg p-6 dark:text-black text-center">
                 <h5 className="text-xl font-semibold text-gray-700">La séance de</h5>
                 <h1 className="text-4xl font-bold dark: ">2.5</h1>
                 <h2 className="text-2xl font-semibold text-gray-500">Heures</h2>
@@ -65,4 +64,4 @@ const Groups = () => {
   );
 };
 
-export default Groups;
+export default Group;

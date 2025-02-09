@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateAbsence, deleteAbsence } from '../redux/action';
+import {useDispatch } from 'react-redux';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Trash2, FilePen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Alert from "../LittleComponents/Alert";
 import DeleteModal from "../LittleComponents/DeleteModal";
+import { stageirs } from '../Users';
+import { Groups } from '../Users';
+import { Absence } from '../Users';
 import './index.css';
 
 const Listabsence = () => {
-  const dispatch = useDispatch();
-  const Absence = useSelector((state) => state.Absences);
-  const Stageirs = useSelector((state) => state.Stageirs);
-  const Groups = useSelector((state) => state.Groups);
-
   const [selectedAbsenceId, setSelectedAbsenceId] = useState(null);
   const [activeModal, setActiveModal] = useState(false);
   const [LoadingDelete, setLoadingDelete] = useState(false);
@@ -22,7 +19,7 @@ const Listabsence = () => {
   const navigate = useNavigate();
 
   const getGroupName = (Cef) => {
-    const stageir = Stageirs.find(s => s.Cef === Cef);
+    const stageir = stageirs.find(s => s.Cef === Cef);
     if (stageir) {
       const group = Groups.find(group => group.idg === stageir.idg);
       return group ? group.name : 'Unknown Group';
@@ -35,11 +32,10 @@ const Listabsence = () => {
     if (!updatedAbsence) return;
 
     const newAbsence = { ...updatedAbsence, type: newType };
-      dispatch(updateAbsence(newAbsence));
   };
 
   const getNomPrenomByCef = (Cef) => {
-    const stageir = Stageirs.find(s => s.Cef === Cef);
+    const stageir = stageirs.find(s => s.Cef === Cef);
     if (stageir) {
       const { nom, prenom } = stageir;
       return {
@@ -53,7 +49,7 @@ const Listabsence = () => {
   const handleDelete = async (id) => {
     setLoadingDelete(true);
     try {
-      await dispatch(deleteAbsence(id));
+      await ((id));
       setLoadingDelete(false);
       setActiveModal(false);
       navigate('/');
