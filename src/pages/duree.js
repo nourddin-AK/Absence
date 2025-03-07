@@ -68,38 +68,24 @@ const Duree = () => {
       },
     }));
   };
-
-  // Handle form submission for the first seance
-  const handleSubmitFirstSeance = (e) => {
+  const handleSubmit = (e, seance) => {
     e.preventDefault();
-    filteredStagiaires.forEach((stagiaire) => {
-      const absence = absenceData[stagiaire.Cef]?.firstSeance;
-      if (absence && absence.type) {
-        
-      }
-      
-    });
+  
+   
+  if (seance === 'firstSeance') {
     setFirstSeanceEnabled(false);
     setSecondSeanceEnabled(true);
-    alert('All absences valid !');
-    console.log(duree);
-    tynav ==="go" && navigate('/')
-    
-  };
-
-  // Handle form submission for the second seance
-  const handleSubmitSecondSeance = (e) => {
-    e.preventDefault();
-    filteredStagiaires.forEach((stagiaire) => {
-      const absence = absenceData[stagiaire.Cef]?.secondSeance;
-      if (absence && absence.type) {
-      }
-    });
+  } else {
     setSecondSeanceEnabled(false);
-    alert(' absences valid !');
-    tynav ==="dont" && navigate('/')
-  };
+  }
 
+  alert(`All absences for the ${seance} are valid!`);
+
+  if ((seance === 'firstSeance' && tynav === "go") || (seance === 'secondSeance' && tynav === "dont")) {
+    navigate('/');
+  }
+  };
+  
   // Reset absence data
   const handleReset = () => {
     setAbsenceData(
@@ -199,7 +185,7 @@ const Duree = () => {
             <>
               {/* First Seance */}
               <form
-                onSubmit={firstSeanceEnabled ? handleSubmitFirstSeance : handleSubmitSecondSeance}
+                onSubmit={(e)=>handleSubmit(e, firstSeanceEnabled ? 'firstSeance' : 'secondSeance')}
                 className="p-4 rounded-2xl shadow-lg bg-gray-50 dark:bg-gray-800"
                 style={{
                     width: '100%',
@@ -292,7 +278,7 @@ const Duree = () => {
           ) : (
             //one seance 
             <form
-                onSubmit={handleSubmitFirstSeance }
+                onSubmit={handleSubmit }
                 className="p-4  mx-auto rounded-xl shadow-lg bg-gray-100 dark:bg-gray-800 text-black "
                 style={{ width: '100%' }}
             >
