@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { stageirs, Groups , Absence } from '../Users';
+import { stageirs, Groups } from '../Users';
 import AbsenceState from '../LittleComponents/AbsenceState';
 
-const Listabsence = () => {
-  const { absenceId } = useParams();
+const Duree = () => {
+  const { groupId } = useParams();
   const navigate = useNavigate();
 
   // Filter stagiaires by group
   const filteredStagiaires = stageirs.filter(
-    (stagiaire) => stagiaire.idg.toString() === absenceId
+    (stagiaire) => stagiaire.idg.toString() === groupId
   );
 
   // Initialize absenceData as an array
@@ -25,7 +25,15 @@ const Listabsence = () => {
   const [absenceData, setAbsenceData] = useState(initialAbsenceData());
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const group = Groups.find((group) => group.idg.toString() === absenceId);
+  // Check localStorage for submission status on component mount
+  useEffect(() => {
+    const submissionStatus = localStorage.getItem(`attendance_${groupId}`);
+    if (submissionStatus === "submitted") {
+      setIsSubmitted(true);
+    }
+  }, [groupId]);
+
+  const group = Groups.find((group) => group.idg.toString() === groupId);
 
   // Handle radio button change
   const handleRadioChange = (cef, type) => {
@@ -40,20 +48,22 @@ const Listabsence = () => {
   const submitAbsence = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    alert('Attendance recorded successfully!');
-     navigate('/schedule');
+    localStorage.setItem(`attendance_${groupId}`, "submitted"); // Save submission status
+    alert("Attendance recorded successfully!");
+    navigate("/schedule");
   };
 
   // Reset absence data
   const handleReset = () => {
     setAbsenceData(initialAbsenceData());
+    localStorage.removeItem(`attendance_${groupId}`); // Remove submission status
     setIsSubmitted(false);
   };
 
   return (
     <div className="mt-4 text-gray-700 dark:text-gray-50">
       <h2 className="text-center text-xl font-bold mb-4">
-        Stagiaires List for Group: {group ? `${group.name} ` : 'Unknown Group'}
+        Stagiaires List for Group: {group ? `${group.name}` : 'Unknown Group'}
       </h2>
       {filteredStagiaires && filteredStagiaires.length > 0 ? (
         <div className="table-responsive">
@@ -101,14 +111,21 @@ const Listabsence = () => {
             <div className="mt-4 flex items-center gap-3">
               <button
                 type="submit"
-                className={`px-6 py-2 text-white rounded-lg focus:outline-none bg-green-700 hover:bg-green-900 ${
+                className={`px-6 py-2 text-white rounded-lg focus:outline-none bg-blue-600 hover:bg-blue-700 ${
                   isSubmitted ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
                 disabled={isSubmitted}
               >
-                Update
+                Submit Attendance
               </button>
 
+              <button
+                className="m-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+                type="button"
+                onClick={handleReset}
+              >
+                Reset
+              </button>
             </div>
           </form>
         </div>
@@ -119,4 +136,4 @@ const Listabsence = () => {
   );
 };
 
-export default Listabsence;
+export default Duree;

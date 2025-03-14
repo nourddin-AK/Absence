@@ -1,40 +1,50 @@
-import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import SideBar from './pages/Menu';
-import Nav from './pages/nav';
-import Dashboard from "./pages/Dashboard";
-import Duree from "./pages/duree";
-import Listabsence from "./pages/listabsence";
-import AdminProfile from "./Admin/AdminProfile"
+import { useState } from "react";
+import { Route,Routes } from "react-router-dom";
+//layout
+import SideBar from "./Dashboard/SideBar";
+import Header from "./Dashboard/Header";
+
+import Dashboard from "./Dashboard/Dashboard";
+import Group from "./Pages/Group";
+import Duree from "./Pages/Durree";
+import Listabsence from "./Pages/ListAbsence";
+import AdminProfile from "./Admin/AdminProfile";
+import Schedule from "./Schedule/Schedule";
+
+
+
+
+
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    const html = document.documentElement;
-    if (theme === 'dark') {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
+  const [isOpen,setIsOpen] = useState(false);
+  const [theme,setTheme] = useState(localStorage.getItem('theme') || 'light');
+  localStorage.setItem('theme',theme)
+  
+  
   return (
-    <div className={`h-screen ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
-      <div className="flex h-full">
-        <SideBar isOpen={isOpen} setIsOpen={setIsOpen}/>
-        <div className={`p-8 pl-0 py-4 w-full transition-all duration-0 overflow-x-hidden lg:mx-auto ${isOpen ? 'lg:ml-64' : 'ml-20 lg:ml-24'}`}>
-
-          <Nav  theme={theme} setTheme={setTheme}/>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/duree" element={<Duree />} />
-            <Route path="/listabsence" element={<Listabsence />} />
+    <div className={`App ${theme }`} >
+      <div className="h-screen bg-white dark:bg-gray-800">
+      {/* Main layout container */}
+      <div className="flex h-full ">
+        {/* Sidebar */}
+        <SideBar isOpen={isOpen} setIsOpen={setIsOpen} darkMode={theme} setDarkMode={setTheme} />
+        <div className={`p-8 pl-0 py-4 w-full  overflow-x-hidden lg:mx-auto ${isOpen ? 'lg:ml-64' : 'ml-20 lg:ml-24'}`}>
+        <Header theme={theme} setTheme={setTheme}/>
+        
+        <Routes>
+        <Route path="/" element={<Dashboard />} />
+            <Route path="/groups" element={<Group />} />
+            <Route path="/duree/:groupId/:duree" element={<Duree />} />
+            <Route path="/listabsence/:absenceId/:duree" element={<Listabsence />} />
             <Route path="/AdminProfile" element={<AdminProfile />} />
-          </Routes>
+            <Route path="/schedule" element={<Schedule />}/>
+
+        </Routes>
+
         </div>
+
       </div>
+    </div>
     </div>
   );
 }

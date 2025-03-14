@@ -58,7 +58,7 @@ export const students = [
       age: 16,
       gender: "Male",
       group: "Dev101",
-      totalAbsences: 5,
+      totalAbsence: 5,
       yesterdayAbsence: 2,
       isAbsentToday : 'No'
 
@@ -70,7 +70,7 @@ export const students = [
       age: 17,
       gender: "Female",
       group: "Dev101",
-      totalAbsences: 4,
+      totalAbsence: 4,
       yesterdayAbsence: 1,
       isAbsentToday : 'Yes'
 
@@ -83,7 +83,7 @@ export const students = [
       age: 16,
       gender: "Male",
       group: "GS101",
-      totalAbsences: 9,
+      totalAbsence: 9,
        yesterdayAbsence: 4,
     isAbsentToday : 'Yes'
 
@@ -96,7 +96,7 @@ export const students = [
       age: 15,
       gender: "Female",
       group: "Dev102",
-      totalAbsences: 12,
+      totalAbsence: 12,
        yesterdayAbsence: 1,
     isAbsentToday : 'No'
 
@@ -109,7 +109,7 @@ export const students = [
       age: 17,
       gender: "Male",
       group: "DEVOWFS201",
-      totalAbsences: 7,
+      totalAbsence: 7,
        yesterdayAbsence: 4,
     isAbsentToday : 'No'
  
@@ -122,7 +122,7 @@ export const students = [
       age: 16,
       gender: "Female",
       group: "Dev102",
-      totalAbsences: 6,
+      totalAbsence: 6,
        yesterdayAbsence: 2,
     isAbsentToday : 'Yes'
      
@@ -135,7 +135,7 @@ export const students = [
       age: 16,
       gender: "Male",
       group: "GS201",
-      totalAbsences: 10,
+      totalAbsence: 10,
        yesterdayAbsence: 1,
     isAbsentToday : 'Yes'
    
@@ -143,9 +143,9 @@ export const students = [
   ];
 
 export const filieres = [
-    {id:1,libel:'Developement Digital',niveau : 'Teachnicien Specialise',numberGroup: 3, totalAbsence : 2,groups:['DEV101','DEVOWFS201']},
-    {id:2,libel:'GS',numberGroup: 3,niveau : 'Teachnicien ', totalAbsence : 10,groups:['GS101','GS102','GS103']},
-    {id:3,libel:'GC',numberGroup: 3,niveau : 'Teachnicien Specialise', totalAbsence : 6,groups:['GC101','GC201','Batiment101']},
+    {id:1,libel:'Developement Digital',niveau : 'Technicien Specialise',numberGroup: 3, totalAbsence : 2,groups:['DEV101','DEVOWFS201']},
+    {id:2,libel:'GS',numberGroup: 3,niveau : 'Technicien ', totalAbsence : 10,groups:['GS101','GS102','GS103']},
+    {id:3,libel:'GC',numberGroup: 3,niveau : 'Technicien Specialise', totalAbsence : 6,groups:['GC101','GC201','Batiment101']},
     {id:4,libel:'ID',numberGroup: 3,niveau : 'Qualification', totalAbsence : 1,groups:['ID101','ID201','ID101','ID201','ID101','ID201','ID101','ID201','ID101','ID201','ID101','ID201']},
     {id:5,libel:'AI',numberGroup: 3,niveau : 'Specialisation', totalAbsence : 20,groups:['AI101','AI201']},
     
@@ -256,32 +256,39 @@ export  const style ={
    
   }
 
+
   export const Groups =[
-    { idg: 1, N_filier: 'Development digital', name: 'Dev101', annee: '1eme', Ng: 1 },
-    { idg: 2, N_filier: 'Rizo', name: 'Rizo201', annee: '2eme', Ng: 1 },
-    { idg: 3, N_filier: 'Gestion', name: 'Gestion301', annee: '3eme', Ng: 1 },
-    { idg: 4, N_filier: 'Genie Civil', name: 'civil101', annee: '1eme', Ng: 1 },
-    { idg: 5, N_filier: 'Assistant Administratif', name: 'AA201', annee: '2eme', Ng: 1 },
-    { idg: 6, N_filier: 'Assistant Administratif', name: 'AA201', annee: '2eme', Ng: 2 },
-    { idg: 7, N_filier: 'Gestion Comptabilite', name: 'GCF301', annee: '3eme', Ng: 1 },
-    { idg: 8, N_filier: 'Gestion Comptabilite', name: 'GCF301', annee: '3eme', Ng: 2 }
+    { idg: 1, N_filier: 'Development digital', name: 'Dev101', annee: 'first year', Ng: 1 },
+    { idg: 2, N_filier: 'Rizo', name: 'Rizo201', annee: 'second year', Ng: 1 },
+    { idg: 3, N_filier: 'Gestion', name: 'Gestion301', annee: 'third year', Ng: 1 },
+    { idg: 4, N_filier: 'Genie Civil', name: 'civil101', annee: 'first year', Ng: 1 },
+    { idg: 5, N_filier: 'Assistant Administratif', name: 'AA201', annee: 'second year', Ng: 1 },
+    { idg: 6, N_filier: 'Assistant Administratif', name: 'AA201', annee: 'second year', Ng: 2 },
+    { idg: 7, N_filier: 'Gestion Comptabilite', name: 'GCF301', annee: 'third year', Ng: 1 },
+    { idg: 8, N_filier: 'Gestion Comptabilite', name: 'GCF301', annee: 'third year', Ng: 2 }
   ]
   
   export const stageirs= [
-    { Cef: 1472008, idg: 1, nom: 'Rami', prenom: 'khlid', Number_absence: 0 },
-    { Cef: 647208, idg: 4, nom: 'khlili', prenom: 'Ayman', Number_absence: 0 },
-    { Cef: 7472248, idg: 1, nom: 'Akfas', prenom: 'Toufik', Number_absence: 0 },
-    { Cef: 2147209, idg: 4, nom: 'Lidrissi', prenom: 'Brahim', Number_absence: 0 },
-    { Cef: 1779038, idg: 7, nom: 'Mouh', prenom: 'Lwali', Number_absence: 0 },
-    { Cef: 1172965, idg: 2, nom: 'Mouhimi', prenom: 'Yassin', Number_absence: 0 },
-    { Cef: 1272098, idg: 3, nom: 'Al bidaoui', prenom: 'Karim', Number_absence: 0 },
-    { Cef: 14772488, idg: 5, nom: 'Bouhoch', prenom: 'Mrabih', Number_absence: 0 },
-    { Cef: 9572068, idg: 6, nom: 'Rami', prenom: 'khlid', Number_absence: 0 },
-    { Cef: 1842038, idg: 8, nom: 'Souaya', prenom: 'Badr', Number_absence: 0 }
+    { Cef: 1472008, idg: 1, fullName: 'Rami khlid', Number_absence: 0 },
+    { Cef: 647208, idg: 4, fullName: 'khlili Ayman', Number_absence: 0 },
+    { Cef: 7472248, idg: 1, fullName: 'Akfas Toufik', Number_absence: 0 },
+    { Cef: 2147209, idg: 4, fullName: 'Lidrissi Brahim', Number_absence: 0 },
+    { Cef: 1779038, idg: 7, fullName: 'Mouh Lwali', Number_absence: 0 },
+    { Cef: 1172965, idg: 2, fullName: 'Mouhimi Yassin', Number_absence: 0 },
+    { Cef: 1272098, idg: 3, fullName: 'Al bidaoui Karim', Number_absence: 0 },
+    { Cef: 14772488, idg: 5, fullName: 'Bouhoch Mrabih', Number_absence: 0 },
+    { Cef: 9572068, idg: 6, fullName: 'Rami khlid', Number_absence: 0 },
+    { Cef: 1842038, idg: 8, fullName: 'Souaya Badr', Number_absence: 0 }
   ]
  
   export const Absence= [
-    {id: 21213,Cef: 1472008,Date: '2025-01-29',type: 'retard',isJustified: false},
-    {id: 5275275,Cef: 2147209,Date: '2025-01-30',type: 'absence',isJustified: false},
+    {id: 21213,idg: 4 ,Cef: 1472008,Date: '2025-01-29',type: 'retard',isJustified: false},
+    {id: 21213,idg: 4 ,Cef: 647208,Date: '2025-01-29',type: 'absence',isJustified: false},
+    {id: 21213,idg: 4 ,Cef: 7472248,Date: '2025-01-29',type: 'retard',isJustified: false},
+    {id: 21213,idg: 4 ,Cef: 1779038,Date: '2025-01-29',type: 'absence',isJustified: false},
+    {id: 21213,idg: 4 ,Cef: 1842038,Date: '2025-01-29',type: 'Present',isJustified: false},
+    {id: 21213,idg: 4 ,Cef: 2147209,Date: '2025-01-29',type: 'absence',isJustified: false},
+    {id: 21213,idg: 4 ,Cef: 1272098,Date: '2025-01-29',type: 'retard',isJustified: false},
+    {id: 5275275,idg: 1,Cef: 2147209,Date: '2025-01-30',type: 'absence',isJustified: false},
 
   ]
