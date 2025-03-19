@@ -7,7 +7,7 @@ import Header from "./Dashboard/Header";
 import Dashboard from "./Dashboard/Dashboard";
 import Group from "./Pages/Group";
 import Duree from "./Pages/Durree";
-import Listabsence from "./Pages/ListAbsence";
+import Listabsence from "./Pages/listabsence";
 import AdminProfile from "./Admin/AdminProfile";
 import Schedule from "./Schedule/Schedule";
 
