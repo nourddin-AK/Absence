@@ -278,7 +278,7 @@ export  const style ={
     { Cef: 6576446, idg: 3, fullName: 'touki soufian', Number_absence: 0 ,isAbsentToday : 'yes',isJustified: true},
     { Cef: 1172965, idg: 2, fullName: 'Mouhimi Yassin', Number_absence: 0 ,isAbsentToday : 'No',isJustified: false},
     { Cef: 1272098, idg: 3, fullName: 'Al bidaoui Karim', Number_absence: 0 ,isAbsentToday : 'no',isJustified: false},
-    { Cef: 1272098, idg: 3, fullName: 'Al khalawi mounir', Number_absence: 0 ,isAbsentToday : 'yes',isJustified: false},
+    { Cef: 1271098, idg: 3, fullName: 'Al khalawi mounir', Number_absence: 0 ,isAbsentToday : 'yes',isJustified: false},
     { Cef: 14772488, idg: 5, fullName: 'Bouhoch Mrabih', Number_absence: 0 ,isAbsentToday : 'No',isJustified: false},
     { Cef: 9572068, idg: 6, fullName: 'Rami khlid', Number_absence: 0 ,isAbsentToday : 'yes',isJustified: true},
     { Cef: 1842038, idg: 8, fullName: 'Souaya Badr', Number_absence: 0 ,isAbsentToday : 'No',isJustified: false}
