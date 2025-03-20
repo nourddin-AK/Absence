@@ -18,7 +18,7 @@ const Duree = () => {
       cef: stagiaire.Cef,
       type: 'Present',
       seance: '8:30 - 11:00',
-      isJustified: false,
+      isJustified: stagiaire.isJustified, // Initialize with stagiaire's isJustified value
     }));
   };
 
@@ -84,7 +84,13 @@ const Duree = () => {
                     return (
                       <tr
                         key={s.id}
-                        className="hover:bg-gray-100 even:bg-gray-50 text-gray-700 dark:text-gray-50 dark:even:bg-gray-900 dark:hover:bg-gray-600"
+                        className={`hover:bg-gray-100 even:bg-gray-50 text-gray-700 dark:text-gray-50 dark:even:bg-gray-900 dark:hover:bg-gray-600 ${
+                          s.isAbsentToday === 'yes'
+                            ? s.isJustified
+                              ? 'bg-green-100 dark:bg-green-900' // Green for justified
+                              : 'bg-red-100 dark:bg-red-900' // Red for not justified
+                            : ''
+                        }`}
                       >
                         <td className="px-3 py-3 lg:px-5 text-center whitespace-nowrap text-xs md:text-sm">
                           <span>{index + 1}</span>
